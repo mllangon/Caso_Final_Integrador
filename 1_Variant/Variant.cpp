@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <nlohmann/json.hpp>
 
 class Variant{
 public:
@@ -68,3 +69,19 @@ private:
 
 
 };
+
+int main() {
+    Variant num(123.45);
+    Variant str("Hello, world!");
+    Variant list({num, str});
+
+    std::cout << "Number to String: " << num.to_string() << std::endl;
+    std::cout << "String to String: " << str.to_string() << std::endl;
+    std::cout << "List to String: " << list.to_string() << std::endl;
+
+    std::cout << "Number to JSON: " << num.to_json_string() << std::endl;
+    std::cout << "String to JSON: " << str.to_json_string() << std::endl;
+    std::cout << "List to JSON: " << list.to_json_string() << std::endl;
+
+    return 0;
+}
