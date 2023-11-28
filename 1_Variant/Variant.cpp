@@ -47,5 +47,24 @@ public:
         // Lógica para construir un Variant basado en el contenido de j
     }
 
+private:
+    std::variant<double, std::string, std::vector<Variant>> value;
+    Type type;
+
+    std::string list_to_string() const {
+        std::ostringstream oss;
+        oss << "[";
+        bool first = true;
+        for (const auto& elem : std::get<std::vector<Variant>>(value)) {
+            if (!first) {
+                oss << ", ";
+            }
+            first = false;
+            oss << elem.to_string();
+        }
+        oss << "]";
+        return oss.str();
+    }
+
 
 };
