@@ -41,5 +41,11 @@ public:
         return j.dump();
     }
 
+    static Variant from_json_string(const std::string& json_str) {
+        // Implementación esquemática
+        nlohmann::json j = nlohmann::json::parse(json_str);
+        // Lógica para construir un Variant basado en el contenido de j
+    }
+
 
 };
