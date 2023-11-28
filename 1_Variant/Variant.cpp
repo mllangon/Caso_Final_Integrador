@@ -23,5 +23,23 @@ public:
         return "";
     }
 
+    std::string to_json_string() const {
+        nlohmann::json j;
+        switch (type) {
+            case Type::Number:
+                j = std::get<double>(value);
+                break;
+            case Type::String:
+                j = std::get<std::string>(value);
+                break;
+            case Type::List:
+                for (const auto& elem : std::get<std::vector<Variant>>(value)) {
+                    j.push_back(nlohmann::json::parse(elem.to_json_string()));
+                }
+                break;
+        }
+        return j.dump();
+    }
+
 
 };
