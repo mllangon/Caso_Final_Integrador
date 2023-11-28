@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
-#include <nlohmann/json.hpp>
+#include <JSON.cpp>
 
 class Variant{
 public:
